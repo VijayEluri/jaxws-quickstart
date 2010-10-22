@@ -1,0 +1,28 @@
+The following are pre-requisites to successfully run the sample code:
+1.1. A Zuora Tenant
+2. A Zuora User
+3.A Product created with a Rate Plan & Rate Plan Component
+4.A Zuora Gateway set up
+5.Make sure the billing cycle day -10th of the month active .The setting option is under Zbilling-settings/Customize Billing Periods 
+Make sure the "Each" UOM exits in the Customize Unit of Measures settings
+
+RUNNING THE EXAMPLE
+-------------------
+
+1. Unzip the files contained in the quickstart_java.zip file to a folder on you hard drive.  
+2. In test.properties, specify:
+    a.) the username for your Zuora user.
+    b.) the password for your Zuora user.
+    c.) if you are testing against apisandbox, change the endpoint to https://apisandbox.zuora.com/apps/services/a/17.0
+    d.) the productName as the name of the Product
+    
+3.run with a argument
+        a). "c-account": Creates an Active Account (Account w/ Status=Active and Bill To Contact/Payment Method)
+	b). "c-subscribe": Creates new subscription,one-call
+	c). "c-subscribe-no-p": Creates new subscription,one-call,no payments
+	d). "c-subscribe-w-existingAccount": Creates new subscription on existing account
+	e). "c-subscribe-w-amendment": Creates new subscription ,upgrade and downgrade
+	f). " cnl-subscription": Cancel subscription
+	g). "c-payment": Creates payment on invoice
+	h). "c-usage": Add usage
+	I). "all": run all test case as above
