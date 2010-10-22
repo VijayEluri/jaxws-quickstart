@@ -1199,8 +1199,8 @@
 	</binding>
 	<service name="ZuoraService">
 		<port name="Soap" binding="zns:SoapBinding">
-			<soap:address location="http://localhost:8081/main/services/a/21.0" /> 
 			<!--<soap:address location="https://staging.zuora.com/apps/services/a/25.0" />  -->
+			<soap:address location="http://localhost:8081/main/services/a/21.0" />
 		</port>
 	</service>
 </definitions>
