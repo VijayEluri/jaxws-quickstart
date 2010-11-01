@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bindings
+
+     xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+
+     xmlns:xs="http://www.w3.org/2001/XMLSchema"
+
+     xmlns="http://java.sun.com/xml/ns/jaxws">
+
+         <jxb:bindings node="//xs:complexType[@name='Invoice']">
+
+              <jxb:class name="ZInvoice"/>
+
+         </jxb:bindings>
+
+</bindings>

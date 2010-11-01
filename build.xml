@@ -1,0 +1,102 @@
+<project default="run" basedir=".">
+	<property name="base.dir" location="./" />
+	<property name="base.dir.lib" location="${base.dir}/lib" />
+	<property name="base.dir.classes" location="${base.dir}/classes" />
+	<property name="base.dir.src" location="${base.dir}/src" />
+	<property name="sample.properties" location="${base.dir}/sample.properties" />
+	<property name="base.dir.bin" location="${base.dir}/bin" ></property>
+	
+	<path id="sample.classpath">
+		<fileset dir="${base.dir.lib}">
+			<include name="**/*.jar" />
+		</fileset>
+		<pathelement path="${base.dir.classes}" />
+	</path>
+	<target name="wsimport">
+		<mkdir dir="${base.dir.classes}" />
+		<exec executable="wsimport" dir="${base.dir.bin}">
+			<arg line="-keep  -XadditionalHeaders -d ../classes ../zuora.a.25.0.wsdl -b ../custom-client.xml" />
+		</exec>
+	</target>
+	<target name="setup" depends="clean,wsimport">
+	</target>
+	<target name="clean">
+		<delete dir="${base.dir.classes}" />
+	</target>
+	<target name="compile" depends="setup">
+		<javac srcdir="src/com/zuora/api/sample/jaxws" destdir="${base.dir.classes}" classpathref="sample.classpath" />
+	</target>
+	<target name="build" depends="compile">
+	</target>
+	<target name="run" depends="all" />
+	<target name="all">
+		<java classname="com.zuora.api.sample.jaxws.ApiSample" classpathref="sample.classpath">
+			<sysproperty key="sample.properties" value="${sample.properties}" />
+			<arg value="all" />
+		</java>
+	</target>
+	<target name="c-account">
+		<java classname="com.zuora.api.sample.jaxws.ApiSample">
+			<classpath refid="sample.classpath" />
+			<sysproperty key="sample.properties" value="${sample.properties}" />
+			<arg value="c-account" />
+		</java>
+	</target>
+	<target name="c-subscribe">
+		<java classname="com.zuora.api.sample.jaxws.ApiSample">
+			<classpath refid="sample.classpath" />
+			<sysproperty key="sample.properties" value="${sample.properties}" />
+			<arg value="c-subscribe" />
+		</java>
+	</target>
+	<target name="c-subscribe-no-p">
+		<java classname="com.zuora.api.sample.jaxws.ApiSample">
+			<classpath refid="sample.classpath" />
+			<sysproperty key="sample.properties" value="${sample.properties}" />
+			<arg value="c-subscribe-no-p" />
+		</java>
+	</target>
+	<target name="c-subscribe-w-existingAccount">
+		<java classname="com.zuora.api.sample.jaxws.ApiSample">
+			<classpath refid="sample.classpath" />
+			<sysproperty key="sample.properties" value="${sample.properties}" />
+			<arg value="c-subscribe-w-existingAccount" />
+		</java>
+	</target>
+	<target name="c-subscribe-w-amendment">
+		<java classname="com.zuora.api.sample.jaxws.ApiSample">
+			<classpath refid="sample.classpath" />
+			<sysproperty key="sample.properties" value="${sample.properties}" />
+			<arg value="c-subscribe-w-amendment" />
+		</java>
+	</target>
+	<target name="cnl-subscription">
+		<java classname="com.zuora.api.sample.jaxws.ApiSample">
+			<classpath refid="sample.classpath" />
+			<sysproperty key="sample.properties" value="${sample.properties}" />
+			<arg value="cnl-subscription" />
+		</java>
+	</target>
+	<target name="c-payment">
+		<java classname="com.zuora.api.sample.jaxws.ApiSample">
+			<classpath refid="sample.classpath" />
+			<sysproperty key="sample.properties" value="${sample.properties}" />
+			<arg value="c-payment" />
+		</java>
+	</target>
+	<target name="c-usage">
+		<java classname="com.zuora.api.sample.jaxws.ApiSample">
+			<classpath refid="sample.classpath" />
+			<sysproperty key="sample.properties" value="${sample.properties}" />
+			<arg value="c-usage" />
+		</java>
+	</target>
+	<target name="help">
+		<java classname="com.zuora.api.sample.jaxws.ApiSample">
+			<classpath refid="sample.classpath" />
+			<sysproperty key="sample.properties" value="${sample.properties}" />
+			<arg value="help" />
+		</java>
+	</target>
+
+</project>
