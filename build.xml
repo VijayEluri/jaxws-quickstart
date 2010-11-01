@@ -5,17 +5,21 @@
 	<property name="base.dir.src" location="${base.dir}/src" />
 	<property name="sample.properties" location="${base.dir}/sample.properties" />
 	<property name="base.dir.bin" location="${base.dir}/bin" ></property>
-	
+	<property environment="env"/> 
+	<echo>JAVA_HOME_${env.JAVA_HOME}</echo> 
 	<path id="sample.classpath">
 		<fileset dir="${base.dir.lib}">
 			<include name="**/*.jar" />
+		</fileset>
+		<fileset dir="${env.JAVA_HOME}/jre/lib">
+			<include name="**/*.jar"/>
 		</fileset>
 		<pathelement path="${base.dir.classes}" />
 	</path>
 	<target name="wsimport">
 		<mkdir dir="${base.dir.classes}" />
-		<exec executable="wsimport" dir="${base.dir.bin}">
-			<arg line="-keep  -XadditionalHeaders -d ../classes ../zuora.a.25.0.wsdl -b ../custom-client.xml" />
+		<exec executable="${env.JAVA_HOME}/bin/wsimport" >
+			<arg line="-keep  -XadditionalHeaders -d classes zuora.a.25.0.wsdl -b custom-client.xml" />
 		</exec>
 	</target>
 	<target name="setup" depends="clean,wsimport">
