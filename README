@@ -1,28 +1,70 @@
+Zuora API Java Quickstart
+
+INTRODUCTION
+------------
+
+Thank you for downloading the Zuora QuickStart Java Toolkit.  This download contains code designed to help you begin using Zuora APIs.
+
+REQUIREMENTS
+------------
+
+JDK 1.6  
+Apache Ant
+
+CONTENTS
+--------
+
+This sample zip contains:
+
+    /readme.txt - this file
+    /build.xml - ant build files to compile and run the sample code manually 
+  	/sample.properties - external property file for setting different values while running the application
+	/zuora.25.0.wsdl - The latest version of the WSDL
+    /lib - contains dependent jar files to run the sample
+    /src - example code to execute the Zuora APIs
+    /.classpath & .project - project files for eclipse
+
+
+PRE-REQUISITES
+--------------
+
 The following are pre-requisites to successfully run the sample code:
-1.1. A Zuora Tenant
+
+1. A Zuora Tenant
 2. A Zuora User
-3.A Product created with a Rate Plan & Rate Plan Component
-4.A Zuora Gateway set up
-5.Make sure the billing cycle day -10th of the month active .The setting option is under Zbilling-settings/Customize Billing Periods 
-Make sure the "Each" UOM exits in the Customize Unit of Measures settings
+    a.) with the User Role Permission to create Invoices (http://knowledgecenter.zuora.com/index.php/Z-Billing_Admin#Manage_User_Roles)
+3. A Product created with a Rate Plan & Rate Plan Component (http://knowledgecenter.zuora.com/index.php/Product_Catalog), with
+    a.) The Effective Period (Start & End) of the Product/Rate Plan not expired (start < today and end > today)
+    b.) To keep things simple ,you'd better create a product with flat-fee of one-time charge for testing.
+4. A Zuora Gateway set up (http://knowledgecenter.zuora.com/index.php/Z-Payments_Admin#Setup_Payment_Gateway)
+    a.) Either Authorize.net, CyberSource, PayPal Payflow Pro (production or test)
+    b.) The setting "Verify new credit card" disabled
+5. Modify the Default Subscription Settings
+	a.) Turn off the "Require Customer Acceptance of Orders?"
+	b.) Turn off the "Require Service Activation of Orders?"
+
+COMPILING THE EXAMPLE
+--------------------- 
+1.If you didn't config the  environment variables JAVA_HOME,please configure it first.
+2. From the command line, run "ant compile" to generate the Java stubs and compile the test code
+
 
 RUNNING THE EXAMPLE
 -------------------
 
 1. Unzip the files contained in the quickstart_java.zip file to a folder on you hard drive.  
-2. In test.properties, specify:
+2. In sample.properties, specify:
     a.) the username for your Zuora user.
     b.) the password for your Zuora user.
     c.) if you are testing against apisandbox, change the endpoint to https://apisandbox.zuora.com/apps/services/a/17.0
     d.) the productName as the name of the Product
-    
-3.run with a argument
-        a). "c-account": Creates an Active Account (Account w/ Status=Active and Bill To Contact/Payment Method)
-	b). "c-subscribe": Creates new subscription,one-call
-	c). "c-subscribe-no-p": Creates new subscription,one-call,no payments
-	d). "c-subscribe-w-existingAccount": Creates new subscription on existing account
-	e). "c-subscribe-w-amendment": Creates new subscription ,upgrade and downgrade
-	f). " cnl-subscription": Cancel subscription
-	g). "c-payment": Creates payment on invoice
-	h). "c-usage": Add usage
-	I). "all": run all test case as above
+3. From the command line, run the test using ant
+    a). "ant c-account": Creates an Active Account (Account w/ Status=Active and Bill To Contact/Payment Method)
+	b). "ant c-subscribe": Creates new subscription,one-call
+	c). "ant c-subscribe-no-p": Creates new subscription,one-call,no payments
+	d). "ant c-subscribe-w-existingAccount": Creates new subscription on existing account
+	e). "ant c-subscribe-w-amendment": Creates new subscription ,upgrade and downgrade
+	f). "ant cnl-subscription": Cancel subscription
+	g). "ant c-payment": Creates payment on invoice
+	h). "ant c-usage": Add usage
+	I). "ant all": run all test case as above
