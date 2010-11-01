@@ -20,7 +20,7 @@ This sample zip contains:
     /build.xml - ant build files to compile and run the sample code manually 
   	/sample.properties - external property file for setting different values while running the application
 	/zuora.25.0.wsdl - The latest version of the WSDL
-        /custom-client.xml - The additional schame
+    /custom-client.xml - The additional schame
     /lib - contains dependent jar files to run the sample
     /src - example code to execute the Zuora APIs
     /.classpath & .project - project files for eclipse
